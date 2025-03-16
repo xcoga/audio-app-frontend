@@ -1,0 +1,370 @@
+/* users.module.css */
+
+/* ===== Layout & Containers ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .tableContainer {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+  
+  .emptyState {
+    background: white;
+    padding: 3rem;
+    text-align: center;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .loadingContainer,
+  .errorContainer,
+  .unauthorizedContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    gap: 1rem;
+  }
+  
+  /* ===== Typography ===== */
+  .title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111827;
+  }
+  
+  .userText {
+    color: #4B5563;
+  }
+  
+  .username {
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .errorText {
+    color: #EF4444;
+    font-weight: 500;
+  }
+  
+  .modalTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  /* ===== Buttons ===== */
+  .addButton {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background: #10B981;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .addButton:hover {
+    background: #059669;
+  }
+  
+  .retryButton {
+    padding: 0.75rem 1.25rem;
+    background: #3B82F6;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .retryButton:hover {
+    background: #2563EB;
+  }
+  
+  .editButton {
+    color: #3B82F6;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s;
+    margin-right: 1rem;
+  }
+  
+  .editButton:hover {
+    color: #2563EB;
+  }
+  
+  .deleteButton {
+    color: #EF4444;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .deleteButton:hover {
+    color: #DC2626;
+  }
+  
+  .deleteButton:disabled {
+    color: #9CA3AF;
+    cursor: not-allowed;
+  }
+  
+  .closeButton {
+    background: none;
+    border: none;
+    color: #6B7280;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .closeButton:hover {
+    color: #111827;
+  }
+  
+  .cancelButton,
+  .submitButton,
+  .confirmDeleteButton {
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .cancelButton {
+    background: #F3F4F6;
+    color: #4B5563;
+    border: 1px solid #E5E7EB;
+  }
+  
+  .cancelButton:hover {
+    background: #E5E7EB;
+  }
+  
+  .submitButton {
+    background: #3B82F6;
+    color: white;
+    border: none;
+  }
+  
+  .submitButton:hover {
+    background: #2563EB;
+  }
+  
+  .confirmDeleteButton {
+    background: #EF4444;
+    color: white;
+    border: none;
+  }
+  
+  .confirmDeleteButton:hover {
+    background: #DC2626;
+  }
+  
+  /* ===== Table Styles ===== */
+  .table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .table th {
+    text-align: left;
+    padding: 1rem;
+    background: #F9FAFB;
+    color: #4B5563;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  
+  .table td {
+    padding: 1rem;
+    border-bottom: 1px solid #E5E7EB;
+    color: #111827;
+  }
+  
+  .table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .table tbody tr:hover {
+    background: #F9FAFB;
+  }
+  
+  .actionsColumn {
+    text-align: right;
+  }
+  
+  .actions {
+    text-align: right;
+  }
+  
+  /* ===== Badges ===== */
+  .adminBadge,
+  .userBadge,
+  .activeBadge,
+  .inactiveBadge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  
+  .adminBadge {
+    background: #EDE9FE;
+    color: #6D28D9;
+  }
+  
+  .userBadge {
+    background: #E0F2FE;
+    color: #0369A1;
+  }
+  
+  .activeBadge {
+    background: #DCFCE7;
+    color: #16A34A;
+  }
+  
+  .inactiveBadge {
+    background: #FEE2E2;
+    color: #DC2626;
+  }
+  
+  /* ===== Modal Styles ===== */
+  .modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+  }
+  
+  .modal {
+    background: white;
+    border-radius: 0.75rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+  
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  
+  .form {
+    padding: 1.5rem;
+  }
+  
+  .formGroup {
+    margin-bottom: 1.25rem;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4B5563;
+  }
+  
+  .formGroup input,
+  .formGroup select {
+    width: 100%;
+    padding: 0.625rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.375rem;
+    background-color: white;
+    font-size: 0.875rem;
+    color: #111827;
+    transition: border-color 0.2s;
+  }
+  
+  .formGroup input:focus,
+  .formGroup select:focus {
+    outline: none;
+    /* ring: 2px;
+    ring-color: #3B82F6; */
+    border-color: #3B82F6;
+  }
+  
+  .deleteConfirmation {
+    padding: 1.5rem;
+  }
+  
+  .modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  /* ===== Responsive Adjustments ===== */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .userInfo {
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .table th:nth-child(1),
+    .table td:nth-child(1) {
+      display: none; /* Hide ID column on mobile */
+    }
+    
+    .modal {
+      width: 90%;
+    }
+  }
+
+
+  
